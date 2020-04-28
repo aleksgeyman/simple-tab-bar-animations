@@ -6,9 +6,9 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, '12.0'
   spec.swift_version = '5.0'
   spec.license      = 'MIT'
-  spec.homepage     = ''
+  spec.homepage     = 'https://github.com/aleksgeyman/simple-tab-bar-animations'
   spec.author      = { 'ALEKSANDAR GEYMAN' => 'aleksgeyman@gmail.com' }
   spec.summary      = 'Simple Tab Bar Animations'
-  spec.source       = { :git => '', :tag => spec.version.to_s }
+  spec.source       = { :git => 'https://github.com/aleksgeyman/simple-tab-bar-animations.git', :tag => spec.version.to_s }
   spec.source_files = 'SimpleTabBarAnimations/Classes/**/*'
 end
