@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name         = 'SimpleTabBarAnimations'
   spec.summary      = 'Simple Tab Bar Animations'
   spec.description  = 'Add animations to your tab bar in a simple manner'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.1'
   spec.platform     = :ios, '12.0'
   spec.swift_version = '5.0'
   spec.license      = 'MIT'

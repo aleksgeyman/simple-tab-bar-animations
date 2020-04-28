@@ -50,7 +50,7 @@ public protocol SimpleTabBarAnimation: UITabBarController {
 }
 
 /// Implementation of SimpleTabBarAnimation
-extension SimpleTabBarAnimation {
+public extension SimpleTabBarAnimation {
     func playAnimation(type: TabBarItemAnimation, for item: UITabBarItem) {
         let barItemIndex = tabBar.items?.firstIndex(of: item) ?? 0
         let subviewIndex = barItemIndex + 1
