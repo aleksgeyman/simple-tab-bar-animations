@@ -30,8 +30,9 @@ import UIKit
 
 /// Available animations for UITabBarItems
 public enum TabBarItemAnimation {
-    case scale
-    // TODO: Implement more animations
+    case bounce
+    case jump
+    case rotate
 }
 
 public protocol SimpleTabBarAnimation: UITabBarController {
@@ -58,17 +59,39 @@ public extension SimpleTabBarAnimation {
             let imageView = tabBar.subviews[subviewIndex].subviews.first as? UIImageView else { return }
         
         switch type {
-        case .scale:
-            scaleAnimation(for: imageView)
+        case .bounce:
+            bounceAnimation(for: imageView)
+        case .jump:
+            jumpAnimation(for: imageView)
+        case .rotate:
+            rotateAnimation(for: imageView)
         }
     }
     
-    private func scaleAnimation(for item: UIImageView) {
+    private func bounceAnimation(for item: UIImageView) {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0, 1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
-        bounceAnimation.duration = TimeInterval(0.5)
-        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        bounceAnimation.duration = 0.5
+        bounceAnimation.calculationMode = .cubic
         
         item.layer.add(bounceAnimation, forKey: nil)
+    }
+    
+    private func jumpAnimation(for item: UIImageView) {
+        let jumpAnimation = CAKeyframeAnimation(keyPath: "position.y")
+        jumpAnimation.values = [1.05, 1.1, 1.15, 1.1, 1.05]
+        jumpAnimation.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
+        jumpAnimation.duration = 0.25
+        
+        item.layer.add(jumpAnimation, forKey: nil)
+    }
+    
+    private func rotateAnimation(for item: UIImageView) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat.pi * 2
+        rotateAnimation.duration = 0.4
+        
+        item.layer.add(rotateAnimation, forKey: nil)
     }
 }
