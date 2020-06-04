@@ -33,6 +33,7 @@ public enum TabBarItemAnimation {
     case bounce
     case jump
     case rotate
+    case custom((UIImageView) -> ())
 }
 
 public protocol SimpleTabBarAnimation: UITabBarController {
@@ -65,6 +66,8 @@ public extension SimpleTabBarAnimation {
             jumpAnimation(for: imageView)
         case .rotate:
             rotateAnimation(for: imageView)
+        case .custom(let animation):
+            animation(imageView)
         }
     }
     
